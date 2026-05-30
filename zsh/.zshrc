@@ -1,6 +1,16 @@
-neofetch
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FIND_NO_DUPS
 
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+# =========================================================
+# Shell behaviour
+# =========================================================
+
+setopt AUTOCD
+setopt NOBEEP
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
@@ -13,11 +23,7 @@ if [[ -z "${SSH_CONNECTION}" ]]; then
     export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 fi
 
-#export PYENV_ROOT="$HOME/.pyenv"
-#[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-#eval "$(pyenv init - zsh)"
 
-export PATH=/usr/lib/jvm/java-17-openjdk/bin:$PATH
 
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -41,14 +47,23 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
 # Add in snippets
+# APT completions y mejoras
+zinit snippet OMZP::ubuntu
+zinit snippet OMZP::debian
+#zinit snippet OMZP::apt
+
+# Aliases y utilidades del sistema
+zinit snippet OMZP::command-not-found
+zinit snippet OMZP::colored-man-pages
+zinit snippet OMZP::extract
+zinit snippet OMZP::history
+zinit snippet OMZP::sudo
+
 zinit snippet OMZL::git.zsh
 zinit snippet OMZP::git
-zinit snippet OMZP::sudo
-zinit snippet OMZP::archlinux
-zinit snippet OMZP::aws
-zinit snippet OMZP::kubectl
-zinit snippet OMZP::kubectx
-zinit snippet OMZP::command-not-found
+zinit snippet OMZP::pip
+zinit snippet OMZP::docker-compose
+zinit snippet OMZP::docker
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -58,6 +73,7 @@ zinit cdreplay -q
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# Keybindings
 # Keybindings
 bindkey -e
 bindkey '^p' history-search-backward
@@ -86,11 +102,19 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
 alias ls='ls --color'
-alias vim='nvim'
-alias c='clear'
-alias cat='bat'
-alias s='pacman -Ss'
+#alias vim='nvim'
+#alias c='clear'
+#alias cat='bat'
+
+export PATH="$PATH:/opt/nvim-linux-x86_64/bin"
+export PATH="$PATH:/opt/gradle/gradle-9.2.0/bin"
+# Android SDK
+export ANDROID_HOME=/opt/android-sdk
+export PATH="$ANDROID_HOME/platform-tools:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/emulator:$PATH"
+
+export IDF_PATH=$HOME/GitRepos/esp-idf
+alias get_idf='. $IDF_PATH/export.sh'
 
 # Shell integrations
-eval "$(fzf --zsh)"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(zoxide init --cmd cd zsh)"
