@@ -56,10 +56,10 @@
     layout = "es";
     options = "caps:escape";
   };
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  services.udisks2.enable = true;
 
   # Enable sound.
   # services.pulseaudio.enable = true;

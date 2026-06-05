@@ -47,10 +47,6 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
 # Add in snippets
-# APT completions y mejoras
-zinit snippet OMZP::ubuntu
-zinit snippet OMZP::debian
-#zinit snippet OMZP::apt
 
 # Aliases y utilidades del sistema
 zinit snippet OMZP::command-not-found
