@@ -1,0 +1,53 @@
+image=/home/pelli/Descargas/night.jpg
+scaling=fill
+
+# ============================================
+# RELOJ Y FECHA (características de swaylock-effects)
+# ============================================
+clock=true
+# Formato de hora (por ejemplo: "2:30 PM")
+timestr="%H:%M"
+# Formato de fecha (por ejemplo: "Mon, Jan 15, 2024")
+datestr="%a, %b %-e, %Y"
+
+# ============================================
+# INDICADOR DE CONTRASEÑA
+# ============================================
+indicator=true
+# Radio del anillo en píxeles
+indicator-radius=150
+# Grosor del anillo
+indicator-thickness=12
+
+# Muestra el indicador incluso durante el período de gracia
+indicator-idle-visible=true
+
+# Muestra bloqueos de teclas como Caps Lock
+indicator-caps-lock=true
+
+# Muestra el número de intentos fallidos
+show-failed-attempts=true
+
+
+# Deshabilitar desbloqueo con eventos del mouse durante gracia
+# grace-no-mouse=true
+
+# ============================================
+# EFECTOS VISUALES
+# ============================================
+# Transición suave al bloquear
+fade-in=0.3
+
+# Desenfoque del fondo (valor: radioxrepeticiones)
+effect-blur=7x5
+
+# Viñeteado para oscurecer los bordes
+effect-vignette=0.5:0.5
+
+# ============================================
+# ESTILO DE TEXTO
+# ============================================
+font-size=32
+# font="JetBrains Mono"
+
+

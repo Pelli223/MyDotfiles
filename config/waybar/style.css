@@ -1,0 +1,109 @@
+@import '/home/pelli/.cache/wal/colors-waybar.css';
+
+* {
+    /* `otf-font-awesome` and SpaceMono Nerd Font are required to be installed for icons */
+    /*font-family: "Fira Sans Semibold", FontAwesome, Roboto, Helvetica, Arial, sans-serif;*/
+    font-size: 13px;
+    transition: background-color .3s ease-out;
+}
+
+window#waybar {
+    background: transparent;
+    color: @color5;
+    font-family: 
+        JetBrains Mono;
+    transition: background-color .5s;
+}
+
+.modules-left,
+.modules-center,
+.modules-right
+{
+    background: @background;
+    margin: 5px 10px;
+    padding: 0 5px;
+    border-radius: 15px;
+}
+.modules-left {
+    padding: 0;
+}
+.modules-center {
+    padding: 0 10px;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#bluetooth,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#power-profiles-daemon,
+#language,
+#mpris {
+    padding: 0 10px;
+    border-radius: 15px;
+}
+
+#clock:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#disk:hover,
+#temperature:hover,
+#backlight:hover,
+#network:hover,
+#pulseaudio:hover,
+#wireplumber:hover,
+#custom-media:hover,
+#tray:hover,
+#mode:hover,
+#idle_inhibitor:hover,
+#scratchpad:hover,
+#power-profiles-daemon:hover,
+#bluetooth:hover,
+#language:hover,
+#mpris:hover {
+    background: @color1;
+}
+
+
+#workspaces button {
+  background: transparent;
+  font-family:
+    JetBrains Mono;
+  font-weight: 900;
+  font-size: 9pt;
+  color: @color3;
+  border:none;
+  border-radius: 15px;
+}
+
+#workspaces button.active {
+    background: @color4; 
+}
+
+#workspaces button:hover {
+  background: @color1;
+  color: @color14;
+  box-shadow: none;
+}
+
+#custom-nixos {
+    margin-left: 5px;
+    padding: 0 10px;
+    font-size: 20px;
+    transition: color .5s;
+}
+#custom-nixos:hover {
+    color: @color14;
+}
