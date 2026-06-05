@@ -1,52 +1,60 @@
 { config, pkgs, inputs, ... }:
 
 let
-  dotfiles = "${config.home.homeDirectory}/MyDotfiles/config";
-  create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
+dotfiles = "${config.home.homeDirectory}/MyDotfiles/config";
+create_symlink = path: config.lib.file.mkOutOfStoreSymlink path;
 
-  # Standard .config/directory
-  configs = {
-    niri = "niri";
-    nvim = "nvim";
-    rofi = "rofi";
-    kitty = "kitty";
-    waybar = "waybar";
-    swaylock = "swaylock";
-  };
-  in
+# Standard .config/directory
+configs = {
+  niri = "niri";
+  nvim = "nvim";
+  rofi = "rofi";
+  kitty = "kitty";
+  waybar = "waybar";
+  swaylock = "swaylock";
+};
+in
 
 {
+  imports = [
+    ./zsh.nix
+  ];
+
   home.username = "pelli";
   home.homeDirectory = "/home/pelli";
   programs.git = {
     enable = true;
-    userName = "Pelli223";
-    userEmail = "dpelli.lafu@gmail.com";
+    settings.user.name = "Pelli223";
+    settings.user.email = "dpelli.lafu@gmail.com";
   };
 
   home.stateVersion = "26.05";
 
   xdg.configFile = builtins.mapAttrs
     (name: subpath: {
-      source = create_symlink "${dotfiles}/${subpath}";
-      recursive = true;
-    })
-    configs;
+     source = create_symlink "${dotfiles}/${subpath}";
+     recursive = true;
+     })
+  configs;
+
+  services.udiskie = {
+    enable = true;
+  };
 
   home.packages = with pkgs; [
     neovim
-    ripgrep
-    nodejs
-    gcc
-    rofi
-    swaybg
-    gnome-themes-extra    
-    adwaita-qt
-    nordic
-    inputs.sidra.packages.${pkgs.system}.default
+      ripgrep
+      nodejs
+      gcc
+      rofi
+      swaybg
+      gnome-themes-extra    
+      adwaita-qt
+      nordic
+      inputs.sidra.packages.${pkgs.system}.default
   ];
 
-gtk = {
+  gtk = {
     enable = true;
     theme = {
       name = "Nordic";
@@ -60,8 +68,8 @@ gtk = {
       name = "Adwaita";
       package = pkgs.gnome-themes-extra;
     };
-    
-    # 🔧 PARTE CORREGIDA - Usar attribute set, no string
+
+# 🔧 PARTE CORREGIDA - Usar attribute set, no string
     gtk3 = {
       extraConfig = {
         "gtk-application-prefer-dark-theme" = 1;

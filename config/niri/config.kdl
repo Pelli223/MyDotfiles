@@ -278,6 +278,7 @@ layout {
 spawn-at-startup "swaybg" "-i" "/home/pelli/Descargas/night.jpg"
 spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
 spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
+//spawn-at-startup "udiskie" "--tray"
 
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.

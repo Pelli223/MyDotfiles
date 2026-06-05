@@ -60,6 +60,7 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
   services.udisks2.enable = true;
+  services.gvfs.enable = true;
 
   # Enable sound.
   # services.pulseaudio.enable = true;
@@ -126,10 +127,10 @@
     logiops
     cliphist
     wl-clipboard
-    pcmanfm
     tree-sitter
     pix
     logiops
+    nautilus
   ];
 
 
