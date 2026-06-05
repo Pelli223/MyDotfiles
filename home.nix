@@ -51,8 +51,14 @@ in
       gnome-themes-extra    
       adwaita-qt
       nordic
+      bibata-cursors
       inputs.sidra.packages.${pkgs.system}.default
   ];
+
+  home.sessionVariables = {
+    XCURSOR_THEME = "Bibata-Modern-Ice";
+    XCURSOR_SIZE = "24";
+  };
 
   gtk = {
     enable = true;
@@ -65,8 +71,8 @@ in
       package = pkgs.gnome-themes-extra;
     };
     cursorTheme = {
-      name = "Adwaita";
-      size = 32;
+      name = "Bibata-Modern-Ice";
+      size = 24;
       package = pkgs.gnome-themes-extra;
     };
 
@@ -95,7 +101,7 @@ in
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
-      cursor-size = 32;
+      cursor-size = 24;
     };
   };
 }
