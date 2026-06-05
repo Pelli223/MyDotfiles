@@ -66,6 +66,7 @@ in
     };
     cursorTheme = {
       name = "Adwaita";
+      size = 32;
       package = pkgs.gnome-themes-extra;
     };
 
@@ -94,6 +95,7 @@ in
   dconf.settings = {
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
+      cursor-size = 32;
     };
   };
 }

@@ -123,6 +123,7 @@
     keepassxc
     fastfetch
     zapzap
+    telegram-desktop
     discord
     logiops
     cliphist
