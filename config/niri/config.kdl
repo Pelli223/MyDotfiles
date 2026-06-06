@@ -177,7 +177,7 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#3EA08A"
+        active-color "#678DB3"
 
         // Color of the ring on inactive monitors.
         //
@@ -208,7 +208,7 @@ layout {
         off
 
         width 4
-        active-color "#ffc87f"
+        active-color "#5E81AC"
         inactive-color "#505050"
 
         // Color of the border around windows that request your attention.
@@ -379,7 +379,7 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Mod+Space hotkey-overlay-title="Run an Application: fuzzel" { spawn "rofi" "-show" "drun"; }
-    Mod+E hotkey-overlay-title="File Explorer : pcmanfm" { spawn "pcmanfm"; }
+    Mod+E hotkey-overlay-title="File Explorer : pcmanfm" { spawn "nautilus"; }
     Mod+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
     Alt+Shift+L { spawn "wlogout"; }
     Mod+V { spawn-sh "cliphist list | rofi -dmenu | cliphist decode | wl-copy"; }

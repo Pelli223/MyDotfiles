@@ -63,7 +63,7 @@ in
   gtk = {
     enable = true;
     theme = {
-      name = "Nordic";
+      name = "Adwaita";
       package = pkgs.nordic;
     };
     iconTheme = {
@@ -76,7 +76,6 @@ in
       package = pkgs.gnome-themes-extra;
     };
 
-# 🔧 PARTE CORREGIDA - Usar attribute set, no string
     gtk3 = {
       extraConfig = {
         "gtk-application-prefer-dark-theme" = 1;
