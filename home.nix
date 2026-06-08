@@ -18,6 +18,7 @@ in
 {
   imports = [
     ./zsh.nix
+    ./swayidle.nix
   ];
 
   home.username = "pelli";
@@ -41,6 +42,8 @@ in
     enable = true;
   };
 
+  services.mako.enable = true;
+
   home.packages = with pkgs; [
     neovim
       ripgrep
@@ -52,12 +55,21 @@ in
       adwaita-qt
       nordic
       bibata-cursors
-      inputs.sidra.packages.${pkgs.system}.default
+      inputs.sidra.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
+
+  home.pointerCursor = {
+    name = "Bibata-Modern-Ice";
+    package = pkgs.bibata-cursors;
+    size = 24;
+    gtk.enable = true;
+    x11.enable = true;
+  };
 
   home.sessionVariables = {
     XCURSOR_THEME = "Bibata-Modern-Ice";
     XCURSOR_SIZE = "24";
+    QT_QPA_PLATFORMTHEME = "qt6ct";
   };
 
   gtk = {
@@ -90,7 +102,7 @@ in
 
   qt = {
     enable = true;
-    platformTheme.name = "gtk"; 
+    #platformTheme.name = "gtk"; 
     style = {
       name = "adwaita-dark";
       package = pkgs.adwaita-qt;

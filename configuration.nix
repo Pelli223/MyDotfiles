@@ -14,6 +14,9 @@
 
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
+  networking.networkmanager.plugins = with pkgs; [
+    networkmanager-openconnect
+  ];
 
   # Set your time zone.
   time.timeZone = "Europe/Madrid";
@@ -65,6 +68,7 @@
   # Enable sound.
   # services.pulseaudio.enable = true;
   # OR
+
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -91,11 +95,6 @@
       tree
     ];
   };
-
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) 
-  [
-    "discord"
-  ];
 
   programs.firefox.enable = true;
   programs.waybar.enable = true;
@@ -124,7 +123,7 @@
     fastfetch
     zapzap
     telegram-desktop
-    discord
+    vesktop
     logiops
     cliphist
     wl-clipboard
@@ -132,6 +131,8 @@
     pix
     logiops
     nautilus
+    gp-saml-gui
+    libnotify
   ];
 
 
