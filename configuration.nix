@@ -10,7 +10,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "pelli-nixos"; # Define your hostname.
+  networking.hostName = "pelli-nixos"; 
 
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
@@ -30,6 +30,7 @@
   };
 
   programs.niri.enable = true;
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
   programs.zsh.enable = true;
   services.blueman.enable = true;
 
@@ -61,13 +62,9 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  #services.printing.enable = true;
   services.udisks2.enable = true;
   services.gvfs.enable = true;
-
-  # Enable sound.
-  # services.pulseaudio.enable = true;
-  # OR
 
   services.pipewire = {
     enable = true;
@@ -110,7 +107,6 @@
     swayidle
     xwayland-satellite
     btop
-    zed-editor
     swaybg
     zsh
     zoxide
@@ -133,6 +129,7 @@
     nautilus
     gp-saml-gui
     libnotify
+    pavucontrol
   ];
 
 
