@@ -130,6 +130,7 @@
     gp-saml-gui
     libnotify
     pavucontrol
+    unzip
   ];
 
 

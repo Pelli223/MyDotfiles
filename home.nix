@@ -42,13 +42,20 @@ in
     enable = true;
   };
 
-  services.mako.enable = true;
+  services.mako = {
+    enable = true;
+    settings = {
+      default-timeout = 5000;
+      on-button-right = "invoke-default-action"; 
+    };
+  };
 
   home.packages = with pkgs; [
     neovim
       ripgrep
       nodejs
       gcc
+      python3
       rofi
       swaybg
       gnome-themes-extra    
