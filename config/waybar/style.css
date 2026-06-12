@@ -11,7 +11,7 @@ window#waybar {
     background: transparent;
     color: @color5;
     font-family: 
-        "JetBrainsMono Nerd Font";
+        "JetBrainsMono Nerd Font ";
     transition: background-color .5s;
 }
 

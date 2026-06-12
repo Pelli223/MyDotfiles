@@ -38,11 +38,13 @@
   "network": {
     "format-wifi": "   {essid} ({signalStrength}%)",
     "format-ethernet": "{ipaddr}/{cidr} 󰛳",
-    "tooltip-format": "{ifname} via {gwaddr} 󰩠",
+    "tooltip-format-ethernet": "{ifname} via {gwaddr} 󰩠",
+    "tooltip-format-wifi": "   {essid}",
     "format-linked": "{ifname} (No IP) ",
     "format-disconnected": "󰖪",
     "format-disabled": "󰖪",
-    "on-click": "bash ~/scripts/wifi/rofi-wifi-menu.sh"
+    "on-click": "bash ~/scripts/wifi/rofi-wifi-menu.sh",
+    "max-length": 25
   },
   "cpu": {
     "format": "  {usage}%",
