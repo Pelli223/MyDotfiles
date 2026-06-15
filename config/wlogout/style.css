@@ -1,0 +1,52 @@
+@import "/home/pelli/.cache/wal/colors-waybar.css";
+
+* {
+	background-image: none;
+	box-shadow: none;
+}
+
+window {
+	background-color: rgba(12, 12, 12, 0.9);
+}
+
+button {
+    border-radius: 0;
+    border-color: @color6;
+	text-decoration-color: @foreground;
+    color: @foreground;
+	background-color: @background;
+	border-style: solid;
+	border-width: 1px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 25%;
+}
+
+button:focus, button:active, button:hover {
+	background-color: @color1;
+	outline-style: none;
+}
+
+#lock {
+    background-image: image(url("./icons/lock_white.png"), url("./icons/lock_white.png"));
+}
+
+#logout {
+    background-image: image(url("./icons/logout_white.png"), url("./icons/logout_white.png"));
+}
+
+#suspend {
+    background-image: image(url("./icons/suspend_white.png"), url("./icons/suspend_white.png"));
+}
+
+#hibernate {
+    background-image: image(url("./icons/hibernate_white.png"), url("./icons/hibernate_white.png"));
+}
+
+#shutdown {
+    background-image: image(url("./icons/shutdown_white.png"), url("./icons/shutdown_white.png"));
+}
+
+#reboot {
+    background-image: image(url("./icons/reboot_white.png"), url("./icons/reboot_white.png"));
+}

@@ -35,7 +35,7 @@
   services.blueman.enable = true;
 
   users.defaultUserShell = pkgs.zsh;
-  
+  services.power-profiles-daemon.enable = true;
 
   # 2. Habilitar greetd
   services.greetd = {
@@ -95,6 +95,7 @@
 
   programs.firefox.enable = true;
   programs.waybar.enable = true;
+  programs.kdeconnect.enable = true;
 
   environment.systemPackages = with pkgs; [
     vim 
@@ -104,11 +105,9 @@
     rofi
     git
     swaylock
-    swayidle
     xwayland-satellite
     btop
     swaybg
-    zsh
     zoxide
     fzf
     pywal

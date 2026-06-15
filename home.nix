@@ -12,13 +12,14 @@ configs = {
   kitty = "kitty";
   waybar = "waybar";
   swaylock = "swaylock";
+  wlogout = "wlogout";
 };
 in
 
 {
   imports = [
     ./zsh.nix
-    ./swayidle.nix
+    ./hypridle.nix
   ];
 
   home.username = "pelli";
@@ -50,6 +51,7 @@ in
     };
   };
 
+
   home.packages = with pkgs; [
     neovim
       ripgrep
@@ -76,7 +78,7 @@ in
   home.sessionVariables = {
     XCURSOR_THEME = "Bibata-Modern-Ice";
     XCURSOR_SIZE = "24";
-    QT_QPA_PLATFORMTHEME = "qt6ct";
+    #QT_QPA_PLATFORMTHEME = "qt6ct";
   };
 
   gtk = {
@@ -109,7 +111,7 @@ in
 
   qt = {
     enable = true;
-    #platformTheme.name = "gtk"; 
+    platformTheme.name = "gtk"; 
     style = {
       name = "adwaita-dark";
       package = pkgs.adwaita-qt;
