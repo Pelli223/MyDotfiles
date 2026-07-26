@@ -6,7 +6,7 @@
     
     settings = {
       general = {
-        lock_cmd = "pidof swaylock || ${pkgs.swaylock}/bin/swaylock --daemonize";
+        lock_cmd = "pidof swaylock || ${pkgs.swaylock-effects}/bin/swaylock --daemonize";
         before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
         after_sleep_cmd = "${pkgs.niri}/bin/niri msg action power-on-monitors";
         ignore_dbus_inhibit = false;
@@ -19,7 +19,7 @@
         }
         {
           timeout = 185;
-          on-timeout = "pidof swaylock || ${pkgs.swaylock}/bin/swaylock --daemonize";
+          on-timeout = "pidof swaylock || ${pkgs.swaylock-effects}/bin/swaylock --daemonize";
         }
         {
           timeout = 190;

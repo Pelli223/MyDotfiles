@@ -43,8 +43,9 @@
     settings = {
       default_session = {
         command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd ${pkgs.niri}/bin/niri-session --user-menu \
-          --user-menu-min-uid 1000 \
+          --user-menu \
           --remember \
+          --remember-session \
           --remember-user-session \
           --asterisks \
         ;";
@@ -84,10 +85,16 @@
     enable = true;
   };
 
+programs.virt-manager.enable = true;
+
+virtualisation.libvirtd.enable = true;
+
+virtualisation.spiceUSBRedirection.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.pelli = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "dialout" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "dialout" "libvirtd"]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree
     ];
@@ -96,6 +103,12 @@
   programs.firefox.enable = true;
   programs.waybar.enable = true;
   programs.kdeconnect.enable = true;
+  
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) [
+      # Add additional package names here
+      "vscode"
+    ];
 
   environment.systemPackages = with pkgs; [
     vim 
@@ -104,7 +117,7 @@
     kitty
     rofi
     git
-    swaylock
+    swaylock-effects
     xwayland-satellite
     btop
     swaybg

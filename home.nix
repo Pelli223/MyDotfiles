@@ -51,6 +51,14 @@ in
     };
   };
 
+  dconf.settings = {
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = ["qemu:///system"];
+      uris = ["qemu:///system"];
+    };
+  };
+
+  programs.vscode.enable=true;
 
   home.packages = with pkgs; [
     neovim
@@ -62,10 +70,21 @@ in
       swaybg
       gnome-themes-extra    
       adwaita-qt
-      nordic
       bibata-cursors
       inputs.sidra.packages.${pkgs.stdenv.hostPlatform.system}.default
-  ];
+      geckodriver
+      vlc
+      texlive.combined.scheme-full
+      bash-language-server
+      clang-tools
+      lua-language-server
+      pyright
+      efm-langserver
+      black
+      stylua
+      cpplint
+      shellcheck
+      ];
 
   home.pointerCursor = {
     name = "Bibata-Modern-Ice";
@@ -78,14 +97,14 @@ in
   home.sessionVariables = {
     XCURSOR_THEME = "Bibata-Modern-Ice";
     XCURSOR_SIZE = "24";
-    #QT_QPA_PLATFORMTHEME = "qt6ct";
+    QT_QPA_PLATFORMTHEME = "qt6ct";
   };
 
   gtk = {
     enable = true;
     theme = {
       name = "Adwaita";
-      package = pkgs.nordic;
+      package = pkgs.gnome-themes-extra;
     };
     iconTheme = {
       name = "Adwaita";
@@ -111,7 +130,6 @@ in
 
   qt = {
     enable = true;
-    platformTheme.name = "gtk"; 
     style = {
       name = "adwaita-dark";
       package = pkgs.adwaita-qt;

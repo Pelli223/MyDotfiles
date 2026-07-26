@@ -1,2 +1,41 @@
 image=/home/pelli/Imágenes/Wallpapers/firewtachNight.png
 scaling=fill
+effect-blur=7x5
+effect-vignette=0.5:0.5
+
+clock
+indicator
+indicator-radius=100
+indicator-thickness=7
+
+timestr=%H:%M
+datestr=%a %d/%m/%Y
+
+# === COMPORTAMIENTO ===
+ignore-empty-password
+
+# Texto general (Reloj, Fecha y estado por defecto)
+text-color=c6c6c8
+
+# Estado en reposo (Círculo)
+ring-color=759ebb
+inside-color=1b1e25aa
+
+# Animación al pulsar teclas
+key-hl-color=6b788e
+bs-hl-color=587397
+
+# Estado: Verificando contraseña
+ring-ver-color=6b788e
+inside-ver-color=1b1e25aa
+text-ver-color=c6c6c8
+
+# Estado: Contraseña incorrecta
+ring-wrong-color=587397
+inside-wrong-color=1b1e25aa
+text-wrong-color=587397
+
+# Estado: Entrada borrada (Clear)
+ring-clear-color=c6c6c8
+inside-clear-color=1b1e25aa
+text-clear-color=c6c6c8
