@@ -143,6 +143,7 @@ virtualisation.spiceUSBRedirection.enable = true;
     libnotify
     pavucontrol
     unzip
+    sway-audio-idle-inhibit
   ];
 
 

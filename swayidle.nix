@@ -1,33 +1,50 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
+let
+  # Lock command
+  lock = "${pkgs.swaylock-effects}/bin/swaylock --daemonize";
+  # Niri
+  display = status: "${pkgs.niri}/bin/niri msg action power-${status}-monitors";
+in
 {
   services.swayidle = {
     enable = true;
-
     timeouts = [
-# Primer aviso: notificación a los 180 segundos
     {
-      timeout = 180;
-      command = "${pkgs.libnotify}/bin/notify-send 'Locking in 5 seconds' -t 5000";
+      timeout = 180; # in seconds
+        command = "${pkgs.libnotify}/bin/notify-send 'Locking in 5 seconds' -t 5000";
     }
-
-# Bloqueo de pantalla a los 185 segundos (5 segundos después del aviso)
     {
       timeout = 185;
-      command = "pidof swaylock || ${pkgs.swaylock-effects}/bin/swaylock --daemonize";
+      command = lock;
     }
-
-# Apagar monitores a los 190 segundos
     {
-      timeout = 190;
-      command = "${pkgs.niri}/bin/niri msg action power-off-monitors";
-      resumeCommand = "${pkgs.niri}/bin/niri msg action power-on-monitors";
+      timeout = 195;
+      command = display "off";
+      resumeCommand = display "on";
     }
-
-# Suspender sistema a los 300 segundos
     {
       timeout = 300;
       command = "${pkgs.systemd}/bin/systemctl suspend";
+    }
+    ];
+    events = [
+    {
+      event = "before-sleep";
+# adding duplicated entries for the same event may not work
+      command = (display "off") + "; " + lock;
+    }
+    {
+      event = "after-resume";
+      command = display "on";
+    }
+    {
+      event = "lock";
+      command = (display "off") + "; " + lock;
+    }
+    {
+      event = "unlock";
+      command = display "on";
     }
     ];
   };

@@ -19,7 +19,7 @@ in
 {
   imports = [
     ./zsh.nix
-    ./hypridle.nix
+    ./swayidle.nix
   ];
 
   home.username = "pelli";
@@ -47,7 +47,7 @@ in
     enable = true;
     settings = {
       default-timeout = 5000;
-      on-button-right = "invoke-default-action"; 
+      on-button-left = "invoke-default-action"; 
     };
   };
 
@@ -84,7 +84,11 @@ in
       stylua
       cpplint
       shellcheck
+      ollama
+      calibre
       ];
+
+  services.ollama.enable = true;
 
   home.pointerCursor = {
     name = "Bibata-Modern-Ice";
