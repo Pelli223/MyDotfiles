@@ -287,7 +287,7 @@ layout {
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
-spawn-at-startup "swaybg" "-i" "/home/pelli/Imágenes/Wallpapers/firewtachNight.png"
+spawn-at-startup "swaybg" "-i" "/home/pelli/Imágenes/Wallpapers/nightHK.JPG"
 spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
 spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
 spawn-at-startup "sway-audio-idle-inhibit"

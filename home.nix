@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 let
 dotfiles = "${config.home.homeDirectory}/MyDotfiles/config";
@@ -61,7 +61,7 @@ in
   programs.vscode.enable=true;
 
   home.packages = with pkgs; [
-    neovim
+      neovim
       ripgrep
       nodejs
       gcc
@@ -84,11 +84,15 @@ in
       stylua
       cpplint
       shellcheck
-      ollama
       calibre
+      libreoffice-qt
+      hyphenDicts.en_GB
+      hyphenDicts.es_ES
+      virtiofsd
       ];
 
   services.ollama.enable = true;
+  systemd.user.services.ollama.Install.WantedBy = lib.mkForce [];
 
   home.pointerCursor = {
     name = "Bibata-Modern-Ice";

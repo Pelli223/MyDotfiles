@@ -87,7 +87,10 @@
 
 programs.virt-manager.enable = true;
 
-virtualisation.libvirtd.enable = true;
+virtualisation.libvirtd = {
+  enable = true;
+  qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
+};
 
 virtualisation.spiceUSBRedirection.enable = true;
 
@@ -146,7 +149,6 @@ virtualisation.spiceUSBRedirection.enable = true;
     sway-audio-idle-inhibit
   ];
 
-
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
@@ -154,6 +156,5 @@ virtualisation.spiceUSBRedirection.enable = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   system.stateVersion = "26.05"; 
-
 }
 
