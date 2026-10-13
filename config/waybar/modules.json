@@ -39,7 +39,7 @@
     "format-wifi": "   {essid} ({signalStrength}%)",
     "format-ethernet": "{ipaddr}/{cidr} 󰛳",
     "tooltip-format-ethernet": "{ifname} via {gwaddr} 󰩠",
-    "tooltip-format-wifi": "   {essid}",
+    "tooltip-format-wifi": "   {essid} ({signalStrength}%)",
     "format-linked": "{ifname} (No IP) ",
     "format-disconnected": "󰖪",
     "format-disabled": "󰖪",
@@ -82,6 +82,7 @@
     "format-alt": "{:%H:%M:%S} ",
     "interval": 1
   },
+
   "mpris": {
     "format": "{player_icon} {dynamic}",
     "format-paused": "{status_icon} <i>{dynamic}</i>",
@@ -89,11 +90,13 @@
     "max-length": 45,
     "player-icons": {
       "default": "⏸",
-      "spotify": ""
+      "sidra": "󰝚"
     },
     "status-icons": {
       "paused": "▶"
-    }
+    },
+    "on-scroll-up": "/run/current-system/sw/bin/playerctld shift",
+    "on-scroll-down": "/run/current-system/sw/bin/playerctld shift",
   },
 
   "bluetooth": {
@@ -113,6 +116,6 @@
   "backlight": {
     "device": "intel_backlight",
     "format": "{icon} {percent}%",
-    "format-icons": ["", ""]
+    "format-icons": ["󰃞", "󰃟", "󰃠"]
   }
 }

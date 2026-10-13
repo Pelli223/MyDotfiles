@@ -54,9 +54,6 @@
          export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
          fi
 
-         export IDF_PATH="$HOME/GitRepos/esp-idf"
-         export ANDROID_HOME="$HOME/.android/sdk"
-
          bindkey -e
          bindkey '^p' history-search-backward
          bindkey '^n' history-search-forward

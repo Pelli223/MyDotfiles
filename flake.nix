@@ -24,9 +24,11 @@
 
         modules = [
         { nixpkgs.hostPlatform = system; }
-          ./configuration.nix
-          nixos-hardware.nixosModules.dell-latitude-e7240
-          home-manager.nixosModules.home-manager
+            ./configuration.nix
+            nixos-hardware.nixosModules.common-cpu-intel
+            nixos-hardware.nixosModules.common-pc-laptop
+            nixos-hardware.nixosModules.common-pc-laptop-ssd          
+            home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

@@ -3,151 +3,71 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+    ./hardware-configuration.nix
+    ./packages.nix
+    ./services.nix
     ];
 
-  # Use the systemd-boot EFI boot loader.
+# Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   networking.hostName = "pelli-nixos"; 
 
-  # Configure network connections interactively with nmcli or nmtui.
+# Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
   networking.networkmanager.plugins = with pkgs; [
     networkmanager-openconnect
   ];
 
-  # Set your time zone.
+# Set your time zone.
   time.timeZone = "Europe/Madrid";
 
-  # Select internationalisation properties.
+# Select internationalisation properties.
   i18n.defaultLocale = "es_ES.UTF-8";
   console = {
     font = "Lat2-Terminus16";
-    # keyMap = "es";
+# keyMap = "es";
     useXkbConfig = true; # use xkb.options in tty.
   };
 
   programs.niri.enable = true;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   programs.zsh.enable = true;
-  services.blueman.enable = true;
 
   users.defaultUserShell = pkgs.zsh;
-  services.power-profiles-daemon.enable = true;
-
-  # 2. Habilitar greetd
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd ${pkgs.niri}/bin/niri-session --user-menu \
-          --user-menu \
-          --remember \
-          --remember-session \
-          --remember-user-session \
-          --asterisks \
-        ;";
-        user = "pelli";
-      };
-    };
-  };
 
   systemd.user.services.niri.enableDefaultPath = false;
 
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "es";
-    options = "caps:escape";
-  };
-
-  # Enable CUPS to print documents.
-  #services.printing.enable = true;
-  services.udisks2.enable = true;
-  services.gvfs.enable = true;
-
-  services.pipewire = {
-    enable = true;
-    pulse.enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.libinput.enable = true;
+  hardware.graphics.enable = true;
+  hardware.enableRedistributableFirmware = true;
 
   security.polkit.enable = true;
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.swaylock = {};
+  security.pam.services.swaylock.fprintAuth = true;
+  security.pam.services.sudo.fprintAuth = true;
 
-  services.openssh = {
+  programs.virt-manager.enable = true;
+
+  virtualisation.libvirtd = {
     enable = true;
+    qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
   };
 
-programs.virt-manager.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
 
-virtualisation.libvirtd = {
-  enable = true;
-  qemu.vhostUserPackages = with pkgs; [ virtiofsd ];
-};
-
-virtualisation.spiceUSBRedirection.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+# Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.pelli = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "dialout" "libvirtd"]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
+    extraGroups = [ "wheel" "networkmanager" "dialout" "libvirtd" "fprintd"]; # Enable ‘sudo’ for the user.
+      packages = with pkgs; [
       tree
-    ];
+      ];
   };
 
   programs.firefox.enable = true;
   programs.waybar.enable = true;
   programs.kdeconnect.enable = true;
-  
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [
-      # Add additional package names here
-      "vscode"
-    ];
-
-  environment.systemPackages = with pkgs; [
-    vim 
-    wget
-    neovim
-    kitty
-    rofi
-    git
-    swaylock-effects
-    xwayland-satellite
-    btop
-    swaybg
-    zoxide
-    fzf
-    pywal
-    wlogout
-    brightnessctl
-    playerctl
-    keepassxc
-    fastfetch
-    zapzap
-    telegram-desktop
-    vesktop
-    logiops
-    cliphist
-    wl-clipboard
-    tree-sitter
-    pix
-    logiops
-    nautilus
-    gp-saml-gui
-    libnotify
-    pavucontrol
-    unzip
-    sway-audio-idle-inhibit
-  ];
 
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono

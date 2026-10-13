@@ -48,6 +48,7 @@ in
     settings = {
       default-timeout = 5000;
       on-button-left = "invoke-default-action"; 
+      border-radius = 10;
     };
   };
 
@@ -89,6 +90,10 @@ in
       hyphenDicts.en_GB
       hyphenDicts.es_ES
       virtiofsd
+      papers
+      discord-canary
+      darktable
+      prismlauncher
       ];
 
   services.ollama.enable = true;
